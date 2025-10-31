@@ -75,11 +75,28 @@ resource "aws_instance" "terra-XIE" {
   instance_type = "t3.micro"
 }
 
-Step 5: Go to EC2 - launch instance - ubantu 
-Terrafom init
-Terrafom plan - check instance 
-Terrafom apply 
-Terrafom destroy 
+Q5. SonarQube using python /java
+step 1: download SonarQube from browser.
+step 2: extract the folder in C drive.
+step 3: set path environment variable(set path as:D:\SonarQube\sonarqube-25.10.0.114319\bin)
+step4: open chrome and go to https://localhost:9000. SonarQube will open. go to dashboard.
+step 5: create project-> give name ->create project->setup new code: follow instance default project (1st option).
+step 6: select locally->generate the token->copy the token id.
+step 7: click continue.click on others->select windows-> copy the command.
+step 8: download sonarscanner.create new folder
+step 9: download SonarQube from browser.
+step 10: extract the folder in C drive.
+step 11: set path environment variable(set path as:D:\SonarQube\sonarqube-25.10.0.114319\bin)
+step 12: open folder extracted Sonarscanner->conf ->properties:
+type this code:
+sonar.projectKey=Test
+sonar.projectName=Test
+sonar.projectVersion=1.0
+sonar.sources=D:\SonarScanner\sonar-scanner-7.3.0.5189-windows-x64\conf
+sonar.token=sqp_4932d0c8397c8f6984aea792c6e6d60b3e2cb315
+sonar.login=admin
+save file
+step 13:sAave folder in conf ->create py file->print hello world bc. 
 
 
 
@@ -104,4 +121,5 @@ Step 1: Go to S3
 Step 2: Create bucket -  name the bucket - Create bucket
 Step 3: Lamda - Lambda console - create function - function name - python - Create function - give code → Doploy
 Step 4: Lambda pase - configuration - Triggers - Add trigger - choseS3 - upload created bucket - Type - All object - At end - Create events - enable check box
+
 Step 5 : Click search S3 - go to bucket - Created - upload - choose file - upload
