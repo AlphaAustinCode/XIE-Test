@@ -1,0 +1,107 @@
+Q2. Demonstrate your application to deploy on S3 /SEBS using AVVS Codepipeline. 
+
+Create & configure S3 bucket
+Step 1: Go to S3 in AWS console 
+Step 2: click on create bucket
+Step 3: Name The bucket , uncheck The block public
+        settings, keep rest as it is -> create bucket
+Step 4: Go into your new bucket > click on The
+        properties
+Step 5: Scroll down to static website hosting & click
+        Edit
+Step 6: Click Enable, set index document To index.html
+        Save changes
+Step 7: Go To permission, Click Edit under bucket policy
+        Write This policy.
+
+Policy example > 4th
+For sample, make changes
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PublicReadGetObject",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::codepipeline-q2/*"
+    }
+  ]
+}
+
+Save Changes
+
+AWS CodePipeline
+Step 1: Go to CodePipeline
+Step 2: Create Pipeline > build custom pipeline -> Next
+Step 3: Name pipeline -> Rest same => Next
+Step 4: Source stage
+        source provider -> Github (via Git Hub App) ->
+        Connect to Github -> Name the connection ->
+        Connect Github #
+Step 5: Repository name -> Default branch (master) ->
+        Tick start us pipeline on push & pull request events -> Next.
+step 6: Bulid stage
+        other bulid provider -> AWS codeBulid
+        Create project
+        Project name
+        Environment image : Managed image
+        Os : Amazon linux =
+        Runtime : standard
+        Image: aws/codebuild /amazonlinux x86.64
+        Build spec - select - Use a build spec File > Next
+Step 7: Skip Test stage
+        Deploy provider : Amazon S3
+        Region: US (N. Virginia)
+        bucket > we create bucket
+        Check Extract file before deploy. - > Next
+
+
+Q4) Install Terraform en windows machine. Build, apply, destroy AVIS EC2 using errazam
+
+Step 1: EC2 check no instance is running
+Step 2: IAM - user - create user - name it → attach policy - click on adminstrator access → create user
+Step 3: click on the user created - create access key → Click CLI→ skip disc tag - copy access and select key - done
+Step 4: Open vs code create file with tf
+
+provider "aws" {
+  access_key = ""
+  secret_key = ""
+  region     = "us-east-1"
+}
+resource "aws_instance" "terra-XIE" {
+  ami           = "ami-"
+  instance_type = "t3.micro"
+}
+
+Step 5: Go to EC2 - launch instance - ubantu 
+Terrafom init
+Terrafom plan - check instance 
+Terrafom apply 
+Terrafom destroy 
+
+
+
+Q7. Create Hello world Lambda function using Nodejs/Java/Python.
+Q9. Create AWS Lambda function to log “I got output”
+
+Step 1:Search Lambda
+Step 2:Create function - function name - Select - python - Create
+Step 3: Dismiss the tab.
+Step 4: Code generated - change as per question in("Hello world")section
+Step 5: Deploy
+Step 6: Than create a test event & give name to test event - save - test
+Step 7: Then click test button below deploy. It should appear succeeded & Display output.
+
+In Q7 Display Hello world.
+In Q9 Display I got output
+
+
+Q8.Create AWS Lambda function to log “an object has been added” on adding the object to s3 bucket. 
+
+Step 1: Go to S3
+Step 2: Create bucket -  name the bucket - Create bucket
+Step 3: Lamda - Lambda console - create function - function name - python - Create function - give code → Doploy
+Step 4: Lambda pase - configuration - Triggers - Add trigger - choseS3 - upload created bucket - Type - All object - At end - Create events - enable check box
+Step 5 : Click search S3 - go to bucket - Created - upload - choose file - upload
